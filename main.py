@@ -13,17 +13,17 @@ import models
 from metrics import AverageMeter, Result
 import utils
 
-from torchviz import make_dot
-
 from torchvision import datasets, transforms
 from torchvision.transforms import ToPILImage
 from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
 
+'''
+from torchviz import make_dot
 import onnx
 import onnxruntime as ort
-
+'''
 
 args = utils.parse_command()
 print(args)
