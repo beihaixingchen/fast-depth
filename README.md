@@ -7,8 +7,8 @@ This repo offers trained models and evaluation code for the [FastDepth](http://f
 	<img src="img/visualization.png" alt="photo not available" width="50%" height="50%">
 </p>
 
-## Quick start
-If you want to test in colab, please click [here](https://colab.research.google.com/drive/1cEXHJSGWtKFdBTkEeu3NRCgC1ILmoOt-?usp=sharing)
+## Quick Start
+If you want to test in colab, please click [here](https://colab.research.google.com/drive/1cEXHJSGWtKFdBTkEeu3NRCgC1ILmoOt-?usp=sharing).
 
 
 ## Contents
