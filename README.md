@@ -16,7 +16,7 @@ This repo offers trained models and evaluation code for the [FastDepth](http://f
 0. [Citation](#citation)
 
 ## Requirements
-- Install [PyTorch](https://pytorch.org/) on a machine with a CUDA GPU. Our code was developed on a system running PyTorch v0.4.1.
+- Install [PyTorch](https://pytorch.org/) on a machine with a CUDA GPU. Our code was developed on a system running PyTorch v0.4.1(v1.2.0 is also tested).
 - Install the [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) format libraries. Files in our pre-processed datasets are in HDF5 format.
   ```bash
   sudo apt-get update
