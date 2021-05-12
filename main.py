@@ -13,11 +13,14 @@ import models
 from metrics import AverageMeter, Result
 import utils
 
+
+
 from torchvision import datasets, transforms
 from torchvision.transforms import ToPILImage
 from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
+import time
 
 '''
 from torchviz import make_dot
@@ -76,6 +79,8 @@ def main():
 
         model.eval()
 
+        start = time.time()
+
         #图片输入
         filename = 'image.jpg'
         image = Image.open(filename).convert('RGB') #读取图像，转换为三维矩阵
@@ -84,11 +89,20 @@ def main():
         img = transform(image) #转为Tensor
         x = img.resize(1,3,224,224) #如果存在要求输入图像为4维的情况，使用resize函数增加一维
         
+        time1 = time.time()
+        print(time1-start)
 
         #深度推理
         #x = torch.rand(1,3,224,224)
         x_torch = x.type(torch.cuda.FloatTensor)
+
+        time2 = time.time()
+        print(time2-start)
+
         depth = model(x_torch)
+
+        time3 = time.time()
+        print(time3-start)
 
 
         #图片输出
@@ -103,14 +117,17 @@ def main():
         
         out = out.cpu().detach().numpy()  # tensor转化为np.array
         out = out.reshape(224,224)  # (1,1,224,224)转为(224,224)
-        print(out)
+        #print(out)
         out = Image.fromarray(out) 
         out = out.convert('L')  # 这样才能转为灰度图，如果是彩色图则改L为‘RGB’
-        out.save('depth.png')
-        
-            
-        '''
 
+        end = time.time()
+        print(end-start)
+
+        out.save('depth.png')
+
+
+        '''
         #转化为onnx
         input_names = ["input"]
         output_names = ["output"]
@@ -127,9 +144,12 @@ def main():
         out_onnx = np.array(out_onnx).reshape(224,224)
         
         print(depth)
-        print(out_onnx)  
+        print(out_onnx) 
+        '''
+               
 
-        
+
+        '''
         #生成结构图
         g = make_dot(y)
         g.render('fastdepth', view=False)
